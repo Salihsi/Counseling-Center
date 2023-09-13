@@ -24,7 +24,6 @@ namespace CounselingCenter
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -68,6 +67,11 @@ namespace CounselingCenter
         {
             DAC DAC = new DAC();
             DAC.ShowDialog();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

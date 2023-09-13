@@ -30,11 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.مراجعاتtoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.پروندهtoolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.دکترtoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,28 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 24);
             this.toolStripMenuItem1.Text = "مدیریت مرکز مشاوره";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // مراجعاتtoolStripMenuItem2
+            // 
+            this.مراجعاتtoolStripMenuItem2.Name = "مراجعاتtoolStripMenuItem2";
+            this.مراجعاتtoolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.مراجعاتtoolStripMenuItem2.Text = "درآمد";
+            this.مراجعاتtoolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // پروندهtoolStripMenuItem3
+            // 
+            this.پروندهtoolStripMenuItem3.Name = "پروندهtoolStripMenuItem3";
+            this.پروندهtoolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
+            this.پروندهtoolStripMenuItem3.Text = "پرونده ها";
+            this.پروندهtoolStripMenuItem3.Click += new System.EventHandler(this.پروندهtoolStripMenuItem3_Click);
+            // 
+            // دکترtoolStripMenuItem4
+            // 
+            this.دکترtoolStripMenuItem4.Name = "دکترtoolStripMenuItem4";
+            this.دکترtoolStripMenuItem4.Size = new System.Drawing.Size(224, 26);
+            this.دکترtoolStripMenuItem4.Text = "هزینه";
+            this.دکترtoolStripMenuItem4.Click += new System.EventHandler(this.دکترtoolStripMenuItem4_Click);
             // 
             // toolStrip1
             // 
@@ -76,27 +98,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1363, 634);
             this.panel1.TabIndex = 2;
-            // 
-            // مراجعاتtoolStripMenuItem2
-            // 
-            this.مراجعاتtoolStripMenuItem2.Name = "مراجعاتtoolStripMenuItem2";
-            this.مراجعاتtoolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
-            this.مراجعاتtoolStripMenuItem2.Text = "مراجعات";
-            this.مراجعاتtoolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // پروندهtoolStripMenuItem3
-            // 
-            this.پروندهtoolStripMenuItem3.Name = "پروندهtoolStripMenuItem3";
-            this.پروندهtoolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
-            this.پروندهtoolStripMenuItem3.Text = "پرونده مراجع ها";
-            this.پروندهtoolStripMenuItem3.Click += new System.EventHandler(this.پروندهtoolStripMenuItem3_Click);
-            // 
-            // دکترtoolStripMenuItem4
-            // 
-            this.دکترtoolStripMenuItem4.Name = "دکترtoolStripMenuItem4";
-            this.دکترtoolStripMenuItem4.Size = new System.Drawing.Size(224, 26);
-            this.دکترtoolStripMenuItem4.Text = "دکتر و مرکز";
-            this.دکترtoolStripMenuItem4.Click += new System.EventHandler(this.دکترtoolStripMenuItem4_Click);
             // 
             // hashtbehesht
             // 
