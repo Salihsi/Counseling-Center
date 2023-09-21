@@ -28,7 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.تاریخDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ناممراجعDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ناممشاورDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ناممعرفDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.کارتDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.پوزDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.نقدیDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.جمعدریافتیDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.درصدمشاورDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.سهممشاورDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.درصدمعرفDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.سهممعرفDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.سهممرکزDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableD1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.counselingcenterDataSet7 = new CounselingCenter.counselingcenterDataSet7();
+            this.tableD1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.counselingcenterDataSet6 = new CounselingCenter.counselingcenterDataSet6();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,40 +80,206 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.counselingcenterDataSet = new CounselingCenter.counselingcenterDataSet();
+            this.counselingcenterDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.counselingcenterDataSet5 = new CounselingCenter.counselingcenterDataSet5();
+            this.tableDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableDTableAdapter = new CounselingCenter.counselingcenterDataSet5TableAdapters.tableDTableAdapter();
+            this.tableD1TableAdapter = new CounselingCenter.counselingcenterDataSet6TableAdapters.tableD1TableAdapter();
+            this.tableD1TableAdapter1 = new CounselingCenter.counselingcenterDataSet7TableAdapters.tableD1TableAdapter();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableD1BindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableD1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableDBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, -1);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.تاریخDataGridViewTextBoxColumn,
+            this.ناممراجعDataGridViewTextBoxColumn,
+            this.ناممشاورDataGridViewTextBoxColumn,
+            this.ناممعرفDataGridViewTextBoxColumn,
+            this.کارتDataGridViewTextBoxColumn,
+            this.پوزDataGridViewTextBoxColumn,
+            this.نقدیDataGridViewTextBoxColumn,
+            this.جمعدریافتیDataGridViewTextBoxColumn,
+            this.درصدمشاورDataGridViewTextBoxColumn,
+            this.سهممشاورDataGridViewTextBoxColumn,
+            this.درصدمعرفDataGridViewTextBoxColumn,
+            this.سهممعرفDataGridViewTextBoxColumn,
+            this.سهممرکزDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tableD1BindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(676, 583);
+            this.dataGridView1.Size = new System.Drawing.Size(1048, 731);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // تاریخDataGridViewTextBoxColumn
+            // 
+            this.تاریخDataGridViewTextBoxColumn.DataPropertyName = "تاریخ";
+            this.تاریخDataGridViewTextBoxColumn.HeaderText = "تاریخ";
+            this.تاریخDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.تاریخDataGridViewTextBoxColumn.Name = "تاریخDataGridViewTextBoxColumn";
+            // 
+            // ناممراجعDataGridViewTextBoxColumn
+            // 
+            this.ناممراجعDataGridViewTextBoxColumn.DataPropertyName = "نام مراجع";
+            this.ناممراجعDataGridViewTextBoxColumn.HeaderText = "نام مراجع";
+            this.ناممراجعDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ناممراجعDataGridViewTextBoxColumn.Name = "ناممراجعDataGridViewTextBoxColumn";
+            // 
+            // ناممشاورDataGridViewTextBoxColumn
+            // 
+            this.ناممشاورDataGridViewTextBoxColumn.DataPropertyName = "نام مشاور";
+            this.ناممشاورDataGridViewTextBoxColumn.HeaderText = "نام مشاور";
+            this.ناممشاورDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ناممشاورDataGridViewTextBoxColumn.Name = "ناممشاورDataGridViewTextBoxColumn";
+            // 
+            // ناممعرفDataGridViewTextBoxColumn
+            // 
+            this.ناممعرفDataGridViewTextBoxColumn.DataPropertyName = "نام معرف";
+            this.ناممعرفDataGridViewTextBoxColumn.HeaderText = "نام معرف";
+            this.ناممعرفDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ناممعرفDataGridViewTextBoxColumn.Name = "ناممعرفDataGridViewTextBoxColumn";
+            // 
+            // کارتDataGridViewTextBoxColumn
+            // 
+            this.کارتDataGridViewTextBoxColumn.DataPropertyName = "کارت";
+            this.کارتDataGridViewTextBoxColumn.HeaderText = "کارت";
+            this.کارتDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.کارتDataGridViewTextBoxColumn.Name = "کارتDataGridViewTextBoxColumn";
+            // 
+            // پوزDataGridViewTextBoxColumn
+            // 
+            this.پوزDataGridViewTextBoxColumn.DataPropertyName = "پوز";
+            this.پوزDataGridViewTextBoxColumn.HeaderText = "پوز";
+            this.پوزDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.پوزDataGridViewTextBoxColumn.Name = "پوزDataGridViewTextBoxColumn";
+            // 
+            // نقدیDataGridViewTextBoxColumn
+            // 
+            this.نقدیDataGridViewTextBoxColumn.DataPropertyName = "نقدی";
+            this.نقدیDataGridViewTextBoxColumn.HeaderText = "نقدی";
+            this.نقدیDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.نقدیDataGridViewTextBoxColumn.Name = "نقدیDataGridViewTextBoxColumn";
+            // 
+            // جمعدریافتیDataGridViewTextBoxColumn
+            // 
+            this.جمعدریافتیDataGridViewTextBoxColumn.DataPropertyName = "جمع دریافتی";
+            this.جمعدریافتیDataGridViewTextBoxColumn.HeaderText = "جمع دریافتی";
+            this.جمعدریافتیDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.جمعدریافتیDataGridViewTextBoxColumn.Name = "جمعدریافتیDataGridViewTextBoxColumn";
+            // 
+            // درصدمشاورDataGridViewTextBoxColumn
+            // 
+            this.درصدمشاورDataGridViewTextBoxColumn.DataPropertyName = "درصد مشاور";
+            this.درصدمشاورDataGridViewTextBoxColumn.HeaderText = "درصد مشاور";
+            this.درصدمشاورDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.درصدمشاورDataGridViewTextBoxColumn.Name = "درصدمشاورDataGridViewTextBoxColumn";
+            // 
+            // سهممشاورDataGridViewTextBoxColumn
+            // 
+            this.سهممشاورDataGridViewTextBoxColumn.DataPropertyName = "سهم مشاور";
+            this.سهممشاورDataGridViewTextBoxColumn.HeaderText = "سهم مشاور";
+            this.سهممشاورDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.سهممشاورDataGridViewTextBoxColumn.Name = "سهممشاورDataGridViewTextBoxColumn";
+            // 
+            // درصدمعرفDataGridViewTextBoxColumn
+            // 
+            this.درصدمعرفDataGridViewTextBoxColumn.DataPropertyName = "درصد معرف";
+            this.درصدمعرفDataGridViewTextBoxColumn.HeaderText = "درصد معرف";
+            this.درصدمعرفDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.درصدمعرفDataGridViewTextBoxColumn.Name = "درصدمعرفDataGridViewTextBoxColumn";
+            // 
+            // سهممعرفDataGridViewTextBoxColumn
+            // 
+            this.سهممعرفDataGridViewTextBoxColumn.DataPropertyName = "سهم معرف";
+            this.سهممعرفDataGridViewTextBoxColumn.HeaderText = "سهم معرف";
+            this.سهممعرفDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.سهممعرفDataGridViewTextBoxColumn.Name = "سهممعرفDataGridViewTextBoxColumn";
+            // 
+            // سهممرکزDataGridViewTextBoxColumn
+            // 
+            this.سهممرکزDataGridViewTextBoxColumn.DataPropertyName = "سهم مرکز";
+            this.سهممرکزDataGridViewTextBoxColumn.HeaderText = "سهم مرکز";
+            this.سهممرکزDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.سهممرکزDataGridViewTextBoxColumn.Name = "سهممرکزDataGridViewTextBoxColumn";
+            // 
+            // tableD1BindingSource1
+            // 
+            this.tableD1BindingSource1.DataMember = "tableD1";
+            this.tableD1BindingSource1.DataSource = this.counselingcenterDataSet7;
+            // 
+            // counselingcenterDataSet7
+            // 
+            this.counselingcenterDataSet7.DataSetName = "counselingcenterDataSet7";
+            this.counselingcenterDataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableD1BindingSource
+            // 
+            this.tableD1BindingSource.DataMember = "tableD1";
+            this.tableD1BindingSource.DataSource = this.counselingcenterDataSet6;
+            // 
+            // counselingcenterDataSet6
+            // 
+            this.counselingcenterDataSet6.DataSetName = "counselingcenterDataSet6";
+            this.counselingcenterDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(787, 47);
+            this.textBox1.Location = new System.Drawing.Point(1067, 27);
             this.textBox1.Name = "textBox1";
+            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(1035, 135);
+            this.textBox2.Location = new System.Drawing.Point(1288, 80);
             this.textBox2.Name = "textBox2";
+            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 2;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(925, 53);
+            this.label1.Location = new System.Drawing.Point(1190, 33);
             this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(55, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "نام مراجع";
@@ -101,8 +287,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1172, 138);
+            this.label2.Location = new System.Drawing.Point(1421, 86);
             this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "نام مشاور";
@@ -110,8 +297,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1168, 47);
+            this.label3.Location = new System.Drawing.Point(1405, 33);
             this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(72, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "تاریخ مراجعه";
@@ -119,8 +307,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(928, 126);
+            this.label4.Location = new System.Drawing.Point(1190, 86);
             this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(52, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "نام معرف";
@@ -128,24 +317,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(939, 424);
+            this.label5.Location = new System.Drawing.Point(1405, 300);
             this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(72, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "جمع دریافتی";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(787, 123);
+            this.textBox5.Location = new System.Drawing.Point(1067, 132);
             this.textBox5.Name = "textBox5";
+            this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox5.Size = new System.Drawing.Size(100, 22);
             this.textBox5.TabIndex = 10;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(737, 496);
+            this.button1.Location = new System.Drawing.Point(1126, 493);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 56);
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button1.Size = new System.Drawing.Size(129, 56);
             this.button1.TabIndex = 11;
             this.button1.Text = "اضافه";
             this.button1.UseVisualStyleBackColor = true;
@@ -153,36 +346,43 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(850, 496);
+            this.button2.Location = new System.Drawing.Point(1126, 431);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 56);
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button2.Size = new System.Drawing.Size(129, 56);
             this.button2.TabIndex = 12;
             this.button2.Text = "ویرایش";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(953, 485);
+            this.button3.Location = new System.Drawing.Point(1284, 555);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 56);
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button3.Size = new System.Drawing.Size(129, 56);
             this.button3.TabIndex = 13;
             this.button3.Text = "پاک کردن";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1062, 496);
+            this.button4.Location = new System.Drawing.Point(1284, 493);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(83, 56);
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button4.Size = new System.Drawing.Size(129, 56);
             this.button4.TabIndex = 14;
             this.button4.Text = "جستجو";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1151, 485);
+            this.button5.Location = new System.Drawing.Point(1284, 431);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 56);
+            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button5.Size = new System.Drawing.Size(129, 56);
             this.button5.TabIndex = 15;
             this.button5.Text = "صفحه اصلی";
             this.button5.UseVisualStyleBackColor = true;
@@ -191,9 +391,10 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.maskedTextBox1.Location = new System.Drawing.Point(1035, 47);
-            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Location = new System.Drawing.Point(1288, 27);
+            this.maskedTextBox1.Mask = "0/00/00";
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
             this.maskedTextBox1.TabIndex = 16;
             this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -203,7 +404,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1184, 207);
+            this.label6.Location = new System.Drawing.Point(1439, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 16);
             this.label6.TabIndex = 17;
@@ -212,8 +413,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(950, 210);
+            this.label7.Location = new System.Drawing.Point(1219, 138);
             this.label7.Name = "label7";
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(23, 16);
             this.label7.TabIndex = 18;
             this.label7.Text = "پوز";
@@ -221,7 +423,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1197, 261);
+            this.label8.Location = new System.Drawing.Point(1443, 198);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 16);
             this.label8.TabIndex = 19;
@@ -230,8 +432,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(939, 267);
+            this.label9.Location = new System.Drawing.Point(1177, 198);
             this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label9.Size = new System.Drawing.Size(68, 16);
             this.label9.TabIndex = 20;
             this.label9.Text = "درصد مشاور";
@@ -239,59 +442,73 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(921, 328);
+            this.label10.Location = new System.Drawing.Point(1187, 300);
             this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label10.Size = new System.Drawing.Size(62, 16);
             this.label10.TabIndex = 21;
             this.label10.Text = "سهم مشاور";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(787, 418);
+            this.textBox3.Location = new System.Drawing.Point(1067, 80);
             this.textBox3.Name = "textBox3";
+            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 22;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged_1);
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(787, 261);
+            this.textBox4.Location = new System.Drawing.Point(1288, 135);
             this.textBox4.Name = "textBox4";
+            this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 23;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(1035, 258);
+            this.textBox6.Location = new System.Drawing.Point(1288, 192);
             this.textBox6.Name = "textBox6";
+            this.textBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox6.Size = new System.Drawing.Size(100, 22);
             this.textBox6.TabIndex = 24;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(787, 201);
+            this.textBox7.Location = new System.Drawing.Point(1288, 297);
             this.textBox7.Name = "textBox7";
+            this.textBox7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox7.Size = new System.Drawing.Size(100, 22);
             this.textBox7.TabIndex = 25;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(1035, 204);
+            this.textBox8.Location = new System.Drawing.Point(1067, 192);
             this.textBox8.Name = "textBox8";
+            this.textBox8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox8.Size = new System.Drawing.Size(100, 22);
             this.textBox8.TabIndex = 26;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(797, 328);
+            this.textBox9.Location = new System.Drawing.Point(1067, 297);
             this.textBox9.Name = "textBox9";
+            this.textBox9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox9.Size = new System.Drawing.Size(100, 22);
             this.textBox9.TabIndex = 27;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1178, 384);
+            this.label11.Location = new System.Drawing.Point(1413, 250);
             this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label11.Size = new System.Drawing.Size(64, 16);
             this.label11.TabIndex = 28;
             this.label11.Text = "درصد معرف";
@@ -300,8 +517,9 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(928, 387);
+            this.label12.Location = new System.Drawing.Point(1191, 350);
             this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label12.Size = new System.Drawing.Size(58, 16);
             this.label12.TabIndex = 29;
             this.label12.Text = "سهم معرف";
@@ -309,38 +527,101 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1166, 427);
+            this.label13.Location = new System.Drawing.Point(1421, 350);
             this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(56, 16);
             this.label13.TabIndex = 30;
             this.label13.Text = "سهم مرکز";
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(1035, 370);
+            this.textBox10.Location = new System.Drawing.Point(1288, 247);
             this.textBox10.Name = "textBox10";
+            this.textBox10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox10.Size = new System.Drawing.Size(100, 22);
             this.textBox10.TabIndex = 31;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(787, 381);
+            this.textBox11.Location = new System.Drawing.Point(1067, 347);
             this.textBox11.Name = "textBox11";
+            this.textBox11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox11.Size = new System.Drawing.Size(100, 22);
             this.textBox11.TabIndex = 32;
+            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(1035, 424);
+            this.textBox12.Location = new System.Drawing.Point(1288, 347);
             this.textBox12.Name = "textBox12";
+            this.textBox12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBox12.Size = new System.Drawing.Size(100, 22);
             this.textBox12.TabIndex = 33;
+            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            // 
+            // counselingcenterDataSet
+            // 
+            this.counselingcenterDataSet.DataSetName = "counselingcenterDataSet";
+            this.counselingcenterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // counselingcenterDataSetBindingSource
+            // 
+            this.counselingcenterDataSetBindingSource.DataSource = this.counselingcenterDataSet;
+            this.counselingcenterDataSetBindingSource.Position = 0;
+            // 
+            // counselingcenterDataSet5
+            // 
+            this.counselingcenterDataSet5.DataSetName = "counselingcenterDataSet5";
+            this.counselingcenterDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableDBindingSource
+            // 
+            this.tableDBindingSource.DataMember = "tableD";
+            this.tableDBindingSource.DataSource = this.counselingcenterDataSet5;
+            // 
+            // tableDTableAdapter
+            // 
+            this.tableDTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableD1TableAdapter
+            // 
+            this.tableD1TableAdapter.ClearBeforeFill = true;
+            // 
+            // tableD1TableAdapter1
+            // 
+            this.tableD1TableAdapter1.ClearBeforeFill = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(1126, 555);
+            this.button6.Name = "button6";
+            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button6.Size = new System.Drawing.Size(129, 56);
+            this.button6.TabIndex = 34;
+            this.button6.Text = "حذف";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1284, 617);
+            this.button7.Name = "button7";
+            this.button7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button7.Size = new System.Drawing.Size(129, 56);
+            this.button7.TabIndex = 35;
+            this.button7.Text = "حالت اول";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // visit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 584);
+            this.ClientSize = new System.Drawing.Size(1491, 736);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
@@ -377,6 +658,14 @@
             this.Text = "درآمد";
             this.Load += new System.EventHandler(this.visit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableD1BindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableD1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableDBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +705,32 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.BindingSource counselingcenterDataSetBindingSource;
+        private counselingcenterDataSet counselingcenterDataSet;
+        private counselingcenterDataSet5 counselingcenterDataSet5;
+        private System.Windows.Forms.BindingSource tableDBindingSource;
+        private counselingcenterDataSet5TableAdapters.tableDTableAdapter tableDTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn تاریخDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ناممراجعDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ناممشاورDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ناممعرفDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn کارتDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn پوزDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn نقدیDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn جمعدریافتیDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn درصدمشاورDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn سهممشاورDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn درصدمعرفDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn سهممعرفDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn سهممرکزDataGridViewTextBoxColumn;
+        private counselingcenterDataSet6 counselingcenterDataSet6;
+        private System.Windows.Forms.BindingSource tableD1BindingSource;
+        private counselingcenterDataSet6TableAdapters.tableD1TableAdapter tableD1TableAdapter;
+        private counselingcenterDataSet7 counselingcenterDataSet7;
+        private System.Windows.Forms.BindingSource tableD1BindingSource1;
+        private counselingcenterDataSet7TableAdapters.tableD1TableAdapter tableD1TableAdapter1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

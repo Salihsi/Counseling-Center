@@ -18,9 +18,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CounselingCenter
 {
+   
+
     public partial class patient : Form 
     {
-        public string SelectedPID { get; set; }
+        
         public patient()
         {
             InitializeComponent();
@@ -33,49 +35,50 @@ namespace CounselingCenter
 
         }
         public void GetData()
-        {
-           string queryString;
-            string connectionString;
+         {
+             string queryString;
+             string connectionString;
+             queryString = @"Select * From [tableP] ";
 
-            queryString = @"Select * From [tableP] ";
-           connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-            DataTable table = new DataTable
-            {
-                Locale = CultureInfo.InvariantCulture
-            };
-            try
-            {
-                using (OleDbConnection connection = new OleDbConnection(connectionString))
-                {
-                    connection.Open(); // Open the database connection.
+        
+            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+             DataTable table = new DataTable
+             {
+                 Locale = CultureInfo.InvariantCulture
+             };
+             try
+             {
+                 using (OleDbConnection connection = new OleDbConnection(connectionString))
+                 {
+                     connection.Open(); // Open the database connection.
 
-                    // Create and configure the command and adapter.
-                    OleDbCommand command = new OleDbCommand(queryString, connection);
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                     // Create and configure the command and adapter.
+                     OleDbCommand command = new OleDbCommand(queryString, connection);
+                     OleDbDataAdapter adapter = new OleDbDataAdapter(command);
 
-                    // Fill the DataTable with data from the database.
-                    adapter.Fill(table);
+                     // Fill the DataTable with data from the database.
+                     adapter.Fill(table);
 
-                    // Set the DataGridView's DataSource after successfully fetching data.
-                    dataGridView1.DataSource = table;
+                     // Set the DataGridView's DataSource after successfully fetching data.
+                     dataGridView1.DataSource = table;
 
-                    // Set column headers.
-                    dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = "parvandenum";
-                    dataGridView1.Columns[2].HeaderText = "name";
-                    dataGridView1.Columns[3].HeaderText = "phone";
-                    dataGridView1.Columns[4].HeaderText = "day";
-                    dataGridView1.Columns[5].HeaderText = "month";
-                    dataGridView1.Columns[6].HeaderText = "year";
-                    dataGridView1.Columns[7].HeaderText = "darmangar";
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle database connection or query errors.
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+                     // Set column headers.
+                     dataGridView1.Columns[0].HeaderText = "ID";
+                     dataGridView1.Columns[1].HeaderText = "parvandenum";
+                     dataGridView1.Columns[2].HeaderText = "name";
+                     dataGridView1.Columns[3].HeaderText = "phone";
+                     dataGridView1.Columns[4].HeaderText = "day";
+                     dataGridView1.Columns[5].HeaderText = "month";
+                     dataGridView1.Columns[6].HeaderText = "year";
+                     dataGridView1.Columns[7].HeaderText = "darmangar";
+                 }
+             }
+             catch (Exception ex)
+             {
+                 // Handle database connection or query errors.
+                 MessageBox.Show("Error: " + ex.Message);
+             }
+         }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -118,13 +121,7 @@ namespace CounselingCenter
                 textBox5.Text = selectedRow.Cells[5].Value?.ToString();
                 textBox6.Text = selectedRow.Cells[6].Value?.ToString();
                 textBox7.Text = selectedRow.Cells[7].Value?.ToString();
-                /*textBox1.Text = selectedRow.Cells["parvandenum"].Value?.ToString();
-                textBox2.Text = selectedRow.Cells["name"].Value?.ToString();
-                textBox3.Text = selectedRow.Cells["phone"].Value?.ToString();
-                textBox4.Text = selectedRow.Cells["day"].Value?.ToString();
-                textBox5.Text = selectedRow.Cells["month"].Value?.ToString();
-                textBox6.Text = selectedRow.Cells["year"].Value?.ToString();
-                textBox7.Text = selectedRow.Cells["darmangar"].Value?.ToString();*/
+             
             }
         }
 
@@ -155,8 +152,8 @@ namespace CounselingCenter
 
         private void patient_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'counselingcenterDataSet.tableP' table. You can move, or remove it, as needed.
-            this.tablePTableAdapter.Fill(this.counselingcenterDataSet.tableP);
+            // TODO: This line of code loads data into the 'counselingcenterDataSet4.tableP' table. You can move, or remove it, as needed.
+            this.tablePTableAdapter1.Fill(this.counselingcenterDataSet4.tableP);
             GetData();
         }
 
@@ -177,12 +174,10 @@ namespace CounselingCenter
 
         private void button2_Click(object sender, EventArgs e)
         {
-           // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
 
-            //string connectionStr = @"Driver={Microsoft Access Driver (*.mdb)};DBQ=Hospital.mdb";
             string query = string.Format(
-                @"UPDATE Patient SET name = '{0}', NID ='{1}', [Birthdate] = '{2}', phone = '{3}' WHERE id = {4}",
+                @"UPDATE tableP SET parvandenum = '{0}', name ='{1}', phone = '{2}', [day] = '{3}', [month] = '{4}', [year] = '{5}', darmangar = '{6}' WHERE ID = {7}",
                 textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString());
 
             OleDbCommand command = new OleDbCommand(query);
@@ -203,6 +198,12 @@ namespace CounselingCenter
 
                 }
             }
+
+            // Save changes to the database.
+            tablePTableAdapter.Update(counselingcenterDataSet.tableP);
+
+    
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -217,7 +218,7 @@ namespace CounselingCenter
 
 
                 string query = string.Format(
-                    @"delete from patient where ID = {0} ", dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    @"delete from tableP where ID = {0} ", dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 OleDbCommand command = new OleDbCommand(query);
 
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -237,13 +238,16 @@ namespace CounselingCenter
                     }
                 }
             }
+            // Save changes to the database.
+            tablePTableAdapter.Update(counselingcenterDataSet.tableP);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-            string query = string.Format(@"SELECT * FROM [Patient] WHERE parvandenum = '{0}' OR name = '{1}%'", textBox1.Text, textBox2.Text);
+            string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum = '{0}' OR name = '{1}' OR phone = '{2}' OR day = '{3}' OR month = '{4}' OR year = '{5}' OR darmangar = '{6}'", textBox1.Text, textBox2.Text,textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
 
             DataTable table = new DataTable
             {
@@ -276,23 +280,25 @@ namespace CounselingCenter
             dataGridView1.Columns[5].HeaderText = "month";
             dataGridView1.Columns[6].HeaderText = "year";
             dataGridView1.Columns[7].HeaderText = "darmangar";
+            // Save changes to the database.
+            tablePTableAdapter.Update(counselingcenterDataSet.tableP);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
+
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-
+            // string query = @"INSERT INTO tableP (parvandenum, name, phone, day, month, year, darmangar) VALUES (?, ?, ?, ?, ?, ?, ?)";
             string query = string.Format(
-                @"insert into Patient (parvandenum,name,phone,day,month,year,darmangar) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}') ",
-                textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
-
-            OleDbCommand command = new OleDbCommand(query);
+                                            @"insert into tableP (parvandenum,name,phone,[day],[month],[year],darmangar) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}') ",
+                                            textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
+            using (OleDbCommand command = new OleDbCommand(query, connection))
             {
+                
                 connection.Open();
-                command.Connection = connection;
                 try
                 {
                     command.ExecuteNonQuery();
@@ -302,9 +308,11 @@ namespace CounselingCenter
                 catch (Exception E)
                 {
                     MessageBox.Show("Error inserting database." + E.Message);
-
                 }
             }
+            // Save changes to the database.
+            tablePTableAdapter.Update(counselingcenterDataSet.tableP);
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -318,5 +326,15 @@ namespace CounselingCenter
             textBox7.Clear();
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+           GetData();
+
+        }
+
+
     }
+
 }
+

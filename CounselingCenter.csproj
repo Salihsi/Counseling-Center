@@ -81,6 +81,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>counselingcenterDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="counselingcenterDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet9.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +195,83 @@
     </None>
     <None Include="counselingcenterDataSet2.xss">
       <DependentUpon>counselingcenterDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet3.xsc">
+      <DependentUpon>counselingcenterDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet3.xss">
+      <DependentUpon>counselingcenterDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet4.xsc">
+      <DependentUpon>counselingcenterDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet4.xss">
+      <DependentUpon>counselingcenterDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet5.xsc">
+      <DependentUpon>counselingcenterDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet5.xss">
+      <DependentUpon>counselingcenterDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet6.xsc">
+      <DependentUpon>counselingcenterDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet6.xss">
+      <DependentUpon>counselingcenterDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet7.xsc">
+      <DependentUpon>counselingcenterDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet7.xss">
+      <DependentUpon>counselingcenterDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet8.xsc">
+      <DependentUpon>counselingcenterDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet8.xss">
+      <DependentUpon>counselingcenterDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet9.xsc">
+      <DependentUpon>counselingcenterDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet9.xss">
+      <DependentUpon>counselingcenterDataSet9.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
