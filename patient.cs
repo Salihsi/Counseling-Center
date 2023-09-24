@@ -247,7 +247,8 @@ namespace CounselingCenter
         {
             // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-            string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum = '{0}' OR name = '{1}' OR phone = '{2}' OR day = '{3}' OR month = '{4}' OR year = '{5}' OR darmangar = '{6}'", textBox1.Text, textBox2.Text,textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
+            string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum = '{0}' OR name LIKE '%{1}%' OR phone = '{2}' OR day = '{3}' OR month = '{4}' OR year = '{5}' OR darmangar = '{6}'", textBox1.Text, textBox2.Text,textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
+            //string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum LIKE '%{0}%' OR name LIKE '%{1}%' OR phone LIKE '%{2}%' OR day LIKE '%{3}%' OR month LIKE '%{4}%' OR year LIKE '%{5}%' OR darmangar LIKE '%{6}%'", textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
 
             DataTable table = new DataTable
             {
@@ -333,7 +334,97 @@ namespace CounselingCenter
 
         }
 
+        private void patient_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if Ctrl + D is pressed
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                // Trigger the button's click action
+                button1.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                // Trigger the button's click action
+                button2.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                // Trigger the button's click action
+                button3.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
 
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                // Trigger the button's click action
+                button4.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                // Trigger the button's click action
+                button5.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.Z)
+            {
+                // Trigger the button's click action
+                button6.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.T)
+            {
+                // Trigger the button's click action
+                button7.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Check if a row is selected
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                    // Populate textboxes with data from the selected row
+                    textBox1.Text = selectedRow.Cells[1].Value.ToString();
+                    textBox2.Text = selectedRow.Cells[2].Value.ToString();
+                    textBox3.Text = selectedRow.Cells[3].Value.ToString();
+                    textBox4.Text = selectedRow.Cells[4].Value.ToString();
+                    textBox5.Text = selectedRow.Cells[5].Value.ToString();
+                    textBox6.Text = selectedRow.Cells[6].Value.ToString();
+                    textBox7.Text = selectedRow.Cells[7].Value.ToString();
+                }
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

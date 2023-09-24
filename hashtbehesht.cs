@@ -73,5 +73,31 @@ namespace CounselingCenter
         {
 
         }
+
+        private void hashtbehesht_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                // Trigger the button's click action
+                پروندهtoolStripMenuItem3.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.H)
+            {
+                // Trigger the button's click action
+                دکترtoolStripMenuItem4.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                // Trigger the button's click action
+                مراجعاتtoolStripMenuItem2.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+
+        }
     }
 }

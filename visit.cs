@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CounselingCenter;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CounselingCenter
 {
@@ -28,6 +29,7 @@ namespace CounselingCenter
         }
         public void GetData()
         {
+
             string queryString;
             string connectionString;
             queryString = @"Select * From [tableD1] ";
@@ -80,14 +82,17 @@ namespace CounselingCenter
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Close();
+            //tableD1TableAdapter1.Update(counselingcenterDataSet7.tableD1);
+
         }
-        private void button1_Click(object sender, EventArgs e)
+       
+      private void button1_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(maskedTextBox1.Text) || string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
@@ -95,6 +100,7 @@ namespace CounselingCenter
                 MessageBox.Show("تاریخ، نام مراجع، و نام مشاور الزامی هستند.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             // Calculate the values for جمع دریافتی, درصد مشاور, and سهم مشاور
             decimal kart = string.IsNullOrWhiteSpace(textBox4.Text) ? 0 : decimal.Parse(textBox4.Text);
             decimal poz = string.IsNullOrWhiteSpace(textBox5.Text) ? 0 : decimal.Parse(textBox5.Text);
@@ -106,13 +112,18 @@ namespace CounselingCenter
 
             // Calculate سهم معرف and سهم مرکز if درصد معرف is filled
             decimal darsadMaaref = string.IsNullOrWhiteSpace(textBox10.Text) ? 0 : decimal.Parse(textBox10.Text);
-            decimal sohmMaaref = (darsadMaaref / 100) * jameDaryafti;
+            decimal sohmMaaref = (darsadMaaref) * jameDaryafti;
             decimal sohmMarkaz = jameDaryafti - (sohmMoshaver + sohmMaaref);
 
-            // Create a new row for the DataTable
+            // Declare your connection string and query string here
+             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string insertQuery = "INSERT INTO [tableD1] ([تاریخ], [نام مراجع], [نام مشاور], [نام معرف], [کارت], [پوز], [نقدی], [جمع دریافتی], [درصد مشاور], [سهم مشاور], [درصد معرف], [سهم معرف], [سهم مرکز]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+            // Create a new row for the DataTable.
             DataRow newRow = ((DataTable)dataGridView1.DataSource).NewRow();
 
-            // Populate the new row with data from textboxes
+            // Set values for the columns.
             newRow["تاریخ"] = maskedTextBox1.Text;
             newRow["نام مراجع"] = textBox1.Text;
             newRow["نام مشاور"] = textBox2.Text;
@@ -126,16 +137,51 @@ namespace CounselingCenter
             newRow["درصد معرف"] = darsadMaaref;
             newRow["سهم معرف"] = sohmMaaref;
             newRow["سهم مرکز"] = sohmMarkaz;
-            // Add the new row to the DataTable
+            // Add the new row to the DataTable.
             ((DataTable)dataGridView1.DataSource).Rows.Add(newRow);
 
-            // Show a success message
-            MessageBox.Show("اطلاعات مراجع اضافه شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            tableD1TableAdapter1.Update(counselingcenterDataSet7.tableD1);
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
 
-            // Clear the textboxes after adding
-            ClearTextBoxes();
-            // Display the values in the added row in the textboxes
+                    // Create and configure the command.
+                    using (OleDbCommand command = new OleDbCommand(insertQuery, connection))
+                    {
+                        // Add parameters to the command.
+                        command.Parameters.AddWithValue("@تاریخ", maskedTextBox1.Text);
+                        command.Parameters.AddWithValue("@نام مراجع", textBox1.Text);
+                        command.Parameters.AddWithValue("@نام مشاور", textBox2.Text);
+                        // Add other parameters here...
+                        command.Parameters.AddWithValue("@نام معرف", textBox3.Text);
+                        command.Parameters.AddWithValue("@کارت", textBox4.Text);
+                        command.Parameters.AddWithValue("@پوز", textBox5.Text);
+                        command.Parameters.AddWithValue("@نقدی", textBox6.Text);
+                        command.Parameters.AddWithValue("@جمع دریافتی", jameDaryafti);
+                        command.Parameters.AddWithValue("@درصد مشاور", darsadMoshaver);
+                        command.Parameters.AddWithValue("@سهم مشاور", sohmMoshaver);
+                        command.Parameters.AddWithValue("@درصد معرف", darsadMaaref);
+                        command.Parameters.AddWithValue("@سهم معرف", sohmMaaref);
+                        command.Parameters.AddWithValue("@سهم مرکز", sohmMarkaz);
+
+                        // Execute the INSERT query.
+                        command.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("اطلاعات مراجع اضافه شد.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle database connection or query errors.
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // ClearTextBoxes();
+
+            
+
             maskedTextBox1.Text = newRow["تاریخ"].ToString();
             textBox1.Text = newRow["نام مراجع"].ToString();
             textBox2.Text = newRow["نام مشاور"].ToString();
@@ -149,26 +195,24 @@ namespace CounselingCenter
             textBox10.Text = newRow["درصد معرف"].ToString();
             textBox11.Text = newRow["سهم معرف"].ToString();
             textBox12.Text = newRow["سهم مرکز"].ToString();
+            tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
+               // Create a SQL command to insert the new row into the database
+                    //string insertQuery = "INSERT INTO tableD1 (سهم مرکز,[سهم معرف],[درصد معرف],[سهم مشاور],[درصد مشاور],[جمع دریافتی],[نقدی],[پوز],[کارت],نام معرف,نام مشاور,نام مراجع,تاریخ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+             
         }
 
+     
+      
         // Function to clear all textboxes
-        private void ClearTextBoxes()
-        {
-            foreach (Control control in Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    textBox.Clear();
-                }
-            }
-            maskedTextBox1.Clear();
-        }
+        
 
         
         private void visit_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'counselingcenterDataSet11.tableD1' table. You can move, or remove it, as needed.
+            this.tableD1TableAdapter2.Fill(this.counselingcenterDataSet11.tableD1);
             // TODO: This line of code loads data into the 'counselingcenterDataSet7.tableD1' table. You can move, or remove it, as needed.
-            this.tableD1TableAdapter1.Fill(this.counselingcenterDataSet7.tableD1);
+           // this.tableD1TableAdapter1.Fill(this.counselingcenterDataSet7.tableD1);
             //textBox1.Text = Selectednamem;
             GetData();
         }
@@ -273,6 +317,7 @@ namespace CounselingCenter
 
         }
 
+      
         private void button2_Click(object sender, EventArgs e)
         {
             // Check if a row is selected
@@ -303,18 +348,84 @@ namespace CounselingCenter
             dataRow["سهم معرف"] = string.IsNullOrWhiteSpace(textBox11.Text) ? 0 : decimal.Parse(textBox11.Text);
             dataRow["سهم مرکز"] = string.IsNullOrWhiteSpace(textBox12.Text) ? 0 : decimal.Parse(textBox12.Text);
 
+            decimal jameDaryafti = Convert.ToDecimal(dataRow["جمع دریافتی"]);
+            decimal darsadMoshaver = Convert.ToDecimal(dataRow["درصد مشاور"]);
+            dataRow["سهم مشاور"] = (darsadMoshaver) * jameDaryafti;
+
+            // Recalculate سهم معرف and سهم مرکز if نام معرف or درصد معرف is updated
+            decimal darsadMaaref = Convert.ToDecimal(dataRow["درصد معرف"]);
+            dataRow["سهم معرف"] = (darsadMaaref) * jameDaryafti;
+            dataRow["سهم مرکز"] = jameDaryafti - (Convert.ToDecimal(dataRow["سهم مشاور"]) + Convert.ToDecimal(dataRow["سهم معرف"]));
+
             // Refresh the DataGridView to reflect the changes
             dataGridView1.Refresh();
 
             // Show a success message
             MessageBox.Show("اطلاعات مراجع بروزرسانی شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            tableD1TableAdapter1.Update(counselingcenterDataSet7.tableD1);
+
+            // You can update the database here
+            try
+            {
+                // Declare your connection string and query string here
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                string updateQuery = "UPDATE [tableD1] SET [تاریخ] = ?, [نام مراجع] = ?, [نام مشاور] = ?, [نام معرف] = ?, [کارت] = ?, [پوز] = ?, [نقدی] = ?, [جمع دریافتی] = ?, [درصد مشاور] = ?, [سهم مشاور] = ?, [درصد معرف] = ?, [سهم معرف] = ?, [سهم مرکز] = ? WHERE [ID] = ?";
+
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Create and configure the command.
+                    using (OleDbCommand command = new OleDbCommand(updateQuery, connection))
+                    {
+                        // Add parameters to the command.
+                        command.Parameters.AddWithValue("@تاریخ", maskedTextBox1.Text);
+                        command.Parameters.AddWithValue("@نام مراجع", textBox1.Text);
+                        command.Parameters.AddWithValue("@نام مشاور", textBox2.Text);
+                        command.Parameters.AddWithValue("@نام معرف", textBox3.Text);
+                        command.Parameters.AddWithValue("@کارت", string.IsNullOrWhiteSpace(textBox4.Text) ? "N/A" : textBox4.Text);
+                        command.Parameters.AddWithValue("@پوز", string.IsNullOrWhiteSpace(textBox5.Text) ? 0 : decimal.Parse(textBox5.Text));
+                        command.Parameters.AddWithValue("@نقدی", string.IsNullOrWhiteSpace(textBox6.Text) ? 0 : decimal.Parse(textBox6.Text));
+                        command.Parameters.AddWithValue("@جمع دریافتی", string.IsNullOrWhiteSpace(textBox7.Text) ? 0 : decimal.Parse(textBox7.Text));
+                        command.Parameters.AddWithValue("@درصد مشاور", string.IsNullOrWhiteSpace(textBox8.Text) ? 0 : decimal.Parse(textBox8.Text));
+                        command.Parameters.AddWithValue("@سهم مشاور", string.IsNullOrWhiteSpace(textBox9.Text) ? 0 : decimal.Parse(textBox9.Text));
+                        command.Parameters.AddWithValue("@درصد معرف", string.IsNullOrWhiteSpace(textBox10.Text) ? 0 : decimal.Parse(textBox10.Text));
+                        command.Parameters.AddWithValue("@سهم معرف", string.IsNullOrWhiteSpace(textBox11.Text) ? 0 : decimal.Parse(textBox11.Text));
+                        command.Parameters.AddWithValue("@سهم مرکز", string.IsNullOrWhiteSpace(textBox12.Text) ? 0 : decimal.Parse(textBox12.Text));
+                        command.Parameters.AddWithValue("@ID", dataRow["ID"]); // Assuming there's an "ID" column
+
+                        // Execute the UPDATE query.
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle database connection or query errors.
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // After updating the DataRow, assign the values back to the textboxes
+            maskedTextBox1.Text = dataRow["تاریخ"].ToString();
+            textBox1.Text = dataRow["نام مراجع"].ToString();
+            textBox2.Text = dataRow["نام مشاور"].ToString();
+            textBox3.Text = dataRow["نام معرف"].ToString();
+            textBox4.Text = dataRow["کارت"].ToString();
+            textBox5.Text = dataRow["پوز"].ToString();
+            textBox6.Text = dataRow["نقدی"].ToString();
+            textBox7.Text = dataRow["جمع دریافتی"].ToString();
+            textBox8.Text = dataRow["درصد مشاور"].ToString();
+            textBox9.Text = dataRow["سهم مشاور"].ToString();
+            textBox10.Text = dataRow["درصد معرف"].ToString();
+            textBox11.Text = dataRow["سهم معرف"].ToString();
+            textBox12.Text = dataRow["سهم مرکز"].ToString();
+
+            // Refresh the DataGridView to reflect the changes
+            dataGridView1.Refresh();
             // Clear the textboxes after updating
-            ClearTextBoxes();
+            // ClearTextBoxes();
         }
 
 
-       
+
         private void button3_Click(object sender, EventArgs e)
         {
             maskedTextBox1.Clear();
@@ -362,6 +473,8 @@ namespace CounselingCenter
                 // Show a success message
                 MessageBox.Show("ردیف انتخاب شده حذف شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -420,18 +533,113 @@ namespace CounselingCenter
             {
                 MessageBox.Show("هیچ موردی با معیارهای جستجوی وارد شده پیدا نشد.", "نتیجه جستجو", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
+
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             // Clear the filter by setting an empty filter string
-            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "";
+            //((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = "";
 
             // Show all rows again
-            dataGridView1.Refresh();
+            //dataGridView1.Refresh();
+            GetData();
         }
 
+        private void visit_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if Ctrl + D is pressed
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                // Trigger the button's click action
+                button1.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                // Trigger the button's click action
+                button2.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                // Trigger the button's click action
+                button3.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
 
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                // Trigger the button's click action
+                button4.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.Z)
+            {
+                // Trigger the button's click action
+                button5.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                // Trigger the button's click action
+                button6.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.T)
+            {
+                // Trigger the button's click action
+                button7.PerformClick();
+                // Prevent further handling of the key press
+                e.SuppressKeyPress = true;
+            }
+        }
 
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Check if a row is selected
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    // Get the selected row
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                    // Populate textboxes with data from the selected row
+
+                    maskedTextBox1.Text = selectedRow.Cells[1].Value.ToString();
+                    textBox1.Text = selectedRow.Cells[2].Value.ToString();
+                    textBox2.Text = selectedRow.Cells[3].Value.ToString();
+                    textBox3.Text = selectedRow.Cells[4].Value.ToString();
+                    textBox4.Text = selectedRow.Cells[5].Value.ToString();
+                    textBox5.Text = selectedRow.Cells[6].Value.ToString();
+                    textBox6.Text = selectedRow.Cells[7].Value.ToString();
+                    textBox7.Text = selectedRow.Cells[8].Value.ToString();
+                    textBox8.Text = selectedRow.Cells[9].Value.ToString();
+                    textBox9.Text = selectedRow.Cells[10].Value.ToString();
+                    textBox10.Text = selectedRow.Cells[11].Value.ToString();
+                    textBox11.Text = selectedRow.Cells[12].Value.ToString();
+                    textBox12.Text = selectedRow.Cells[13].Value.ToString();
+
+                }
+            }
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

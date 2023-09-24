@@ -76,6 +76,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>counselingcenterDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="counselingcenterDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="counselingcenterDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>counselingcenterDataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="counselingcenterDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +194,28 @@
     </None>
     <None Include="counselingcenterDataSet1.xss">
       <DependentUpon>counselingcenterDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet10.xsc">
+      <DependentUpon>counselingcenterDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet10.xss">
+      <DependentUpon>counselingcenterDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet11.xsc">
+      <DependentUpon>counselingcenterDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="counselingcenterDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>counselingcenterDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="counselingcenterDataSet11.xss">
+      <DependentUpon>counselingcenterDataSet11.xsd</DependentUpon>
     </None>
     <None Include="counselingcenterDataSet2.xsc">
       <DependentUpon>counselingcenterDataSet2.xsd</DependentUpon>

@@ -65,22 +65,27 @@
             // مراجعاتtoolStripMenuItem2
             // 
             this.مراجعاتtoolStripMenuItem2.Name = "مراجعاتtoolStripMenuItem2";
-            this.مراجعاتtoolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
-            this.مراجعاتtoolStripMenuItem2.Text = "درآمد";
+            this.مراجعاتtoolStripMenuItem2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.مراجعاتtoolStripMenuItem2.Size = new System.Drawing.Size(274, 26);
+            this.مراجعاتtoolStripMenuItem2.Text = "درآمد                   Cntrl+D";
             this.مراجعاتtoolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // پروندهtoolStripMenuItem3
             // 
             this.پروندهtoolStripMenuItem3.Name = "پروندهtoolStripMenuItem3";
-            this.پروندهtoolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
-            this.پروندهtoolStripMenuItem3.Text = "پرونده ها";
+            this.پروندهtoolStripMenuItem3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.پروندهtoolStripMenuItem3.RightToLeftAutoMirrorImage = true;
+            this.پروندهtoolStripMenuItem3.Size = new System.Drawing.Size(274, 26);
+            this.پروندهtoolStripMenuItem3.Text = "پرونده ها                   Cntrl+P";
             this.پروندهtoolStripMenuItem3.Click += new System.EventHandler(this.پروندهtoolStripMenuItem3_Click);
             // 
             // دکترtoolStripMenuItem4
             // 
             this.دکترtoolStripMenuItem4.Name = "دکترtoolStripMenuItem4";
-            this.دکترtoolStripMenuItem4.Size = new System.Drawing.Size(224, 26);
-            this.دکترtoolStripMenuItem4.Text = "هزینه";
+            this.دکترtoolStripMenuItem4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.دکترtoolStripMenuItem4.RightToLeftAutoMirrorImage = true;
+            this.دکترtoolStripMenuItem4.Size = new System.Drawing.Size(274, 26);
+            this.دکترtoolStripMenuItem4.Text = "هزینه                   Cntrl+H";
             this.دکترtoolStripMenuItem4.Click += new System.EventHandler(this.دکترtoolStripMenuItem4_Click);
             // 
             // toolStrip1
@@ -107,10 +112,13 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "hashtbehesht";
             this.Text = "مرکز مشاوره هشت بهشت";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.hashtbehesht_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.hashtbehesht_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
