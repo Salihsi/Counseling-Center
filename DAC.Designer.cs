@@ -72,6 +72,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableH1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet9)).BeginInit();
@@ -487,11 +488,23 @@
             this.label13.TabIndex = 20;
             this.label13.Text = "Cnrtl+T";
             // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label14.Location = new System.Drawing.Point(1154, 154);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 16);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "ریال";
+            // 
             // DAC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1492, 681);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -582,5 +595,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

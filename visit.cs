@@ -116,10 +116,8 @@ namespace CounselingCenter
             decimal sohmMarkaz = jameDaryafti - (sohmMoshaver + sohmMaaref);
 
             // Declare your connection string and query string here
-             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-            string insertQuery = "INSERT INTO [tableD1] ([تاریخ], [نام مراجع], [نام مشاور], [نام معرف], [کارت], [پوز], [نقدی], [جمع دریافتی], [درصد مشاور], [سهم مشاور], [درصد معرف], [سهم معرف], [سهم مرکز]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string insertQuery = "INSERT INTO [tableD1] ([سهم مرکز], [سهم معرف], [درصد معرف], [سهم مشاور], [درصد مشاور], [جمع دریافتی], [نقدی], [پوز], [کارت], [نام معرف], [نام مشاور], [نام مراجع], [تاریخ]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             // Create a new row for the DataTable.
             DataRow newRow = ((DataTable)dataGridView1.DataSource).NewRow();
 
@@ -127,8 +125,8 @@ namespace CounselingCenter
             newRow["تاریخ"] = maskedTextBox1.Text;
             newRow["نام مراجع"] = textBox1.Text;
             newRow["نام مشاور"] = textBox2.Text;
-            newRow["نام معرف"] = textBox3.Text;
-            newRow["کارت"] = string.IsNullOrWhiteSpace(textBox4.Text) ? "N/A" : textBox4.Text;
+            newRow["نام معرف"] = string.IsNullOrWhiteSpace(textBox3.Text) ? "N" : textBox3.Text;
+            newRow["کارت"] = string.IsNullOrWhiteSpace(textBox4.Text) ? 0 : decimal.Parse(textBox4.Text);
             newRow["پوز"] = string.IsNullOrWhiteSpace(textBox5.Text) ? 0 : decimal.Parse(textBox5.Text);
             newRow["نقدی"] = string.IsNullOrWhiteSpace(textBox6.Text) ? 0 : decimal.Parse(textBox6.Text);
             newRow["جمع دریافتی"] = jameDaryafti;
@@ -139,7 +137,6 @@ namespace CounselingCenter
             newRow["سهم مرکز"] = sohmMarkaz;
             // Add the new row to the DataTable.
             ((DataTable)dataGridView1.DataSource).Rows.Add(newRow);
-
             try
             {
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -150,20 +147,19 @@ namespace CounselingCenter
                     using (OleDbCommand command = new OleDbCommand(insertQuery, connection))
                     {
                         // Add parameters to the command.
-                        command.Parameters.AddWithValue("@تاریخ", maskedTextBox1.Text);
-                        command.Parameters.AddWithValue("@نام مراجع", textBox1.Text);
-                        command.Parameters.AddWithValue("@نام مشاور", textBox2.Text);
-                        // Add other parameters here...
-                        command.Parameters.AddWithValue("@نام معرف", textBox3.Text);
-                        command.Parameters.AddWithValue("@کارت", textBox4.Text);
-                        command.Parameters.AddWithValue("@پوز", textBox5.Text);
-                        command.Parameters.AddWithValue("@نقدی", textBox6.Text);
-                        command.Parameters.AddWithValue("@جمع دریافتی", jameDaryafti);
-                        command.Parameters.AddWithValue("@درصد مشاور", darsadMoshaver);
-                        command.Parameters.AddWithValue("@سهم مشاور", sohmMoshaver);
-                        command.Parameters.AddWithValue("@درصد معرف", darsadMaaref);
-                        command.Parameters.AddWithValue("@سهم معرف", sohmMaaref);
                         command.Parameters.AddWithValue("@سهم مرکز", sohmMarkaz);
+                        command.Parameters.AddWithValue("@سهم معرف", sohmMaaref);
+                        command.Parameters.AddWithValue("@درصد معرف", darsadMaaref);
+                        command.Parameters.AddWithValue("@سهم مشاور", sohmMoshaver);
+                        command.Parameters.AddWithValue("@درصد مشاور", darsadMoshaver);
+                        command.Parameters.AddWithValue("@جمع دریافتی", jameDaryafti);
+                        command.Parameters.AddWithValue("@نقدی", naqd);
+                        command.Parameters.AddWithValue("@پوز", poz);
+                        command.Parameters.AddWithValue("@کارت", kart);
+                        command.Parameters.AddWithValue("@نام معرف", textBox3.Text);
+                        command.Parameters.AddWithValue("@نام مشاور", textBox2.Text);
+                        command.Parameters.AddWithValue("@نام مراجع", textBox1.Text);
+                        command.Parameters.AddWithValue("@تاریخ", maskedTextBox1.Text);
 
                         // Execute the INSERT query.
                         command.ExecuteNonQuery();
@@ -177,12 +173,12 @@ namespace CounselingCenter
                 // Handle database connection or query errors.
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
 
             // ClearTextBoxes();
 
-            
-
-            maskedTextBox1.Text = newRow["تاریخ"].ToString();
+            // Assign values from newRow to textboxes after the record has been added
+           maskedTextBox1.Text = newRow["تاریخ"].ToString();
             textBox1.Text = newRow["نام مراجع"].ToString();
             textBox2.Text = newRow["نام مشاور"].ToString();
             textBox3.Text = newRow["نام معرف"].ToString();
@@ -195,10 +191,9 @@ namespace CounselingCenter
             textBox10.Text = newRow["درصد معرف"].ToString();
             textBox11.Text = newRow["سهم معرف"].ToString();
             textBox12.Text = newRow["سهم مرکز"].ToString();
+
             tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
-               // Create a SQL command to insert the new row into the database
-                    //string insertQuery = "INSERT INTO tableD1 (سهم مرکز,[سهم معرف],[درصد معرف],[سهم مشاور],[درصد مشاور],[جمع دریافتی],[نقدی],[پوز],[کارت],نام معرف,نام مشاور,نام مراجع,تاریخ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-             
+
         }
 
      
@@ -269,6 +264,11 @@ namespace CounselingCenter
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
+            if (textBox5.Text == "" || textBox5.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox5.Text, System.Globalization.NumberStyles.Currency);
+            textBox5.Text = price.ToString("#,#");
+            textBox5.SelectionStart = textBox5.Text.Length;
 
         }
 
@@ -279,17 +279,30 @@ namespace CounselingCenter
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox7.Text == "" || textBox7.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox7.Text, System.Globalization.NumberStyles.Currency);
+            textBox7.Text = price.ToString("#,#");
+            textBox7.SelectionStart = textBox7.Text.Length;
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+            if (textBox6.Text == "" || textBox6.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox6.Text, System.Globalization.NumberStyles.Currency);
+            textBox6.Text = price.ToString("#,#");
+            textBox6.SelectionStart = textBox6.Text.Length;
 
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox4.Text == "" || textBox4.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox4.Text, System.Globalization.NumberStyles.Currency);
+            textBox4.Text = price.ToString("#,#");
+            textBox4.SelectionStart = textBox4.Text.Length;
         }
 
         private void textBox10_TextChanged(object sender, EventArgs e)
@@ -299,17 +312,29 @@ namespace CounselingCenter
 
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox9.Text == "" || textBox9.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox9.Text, System.Globalization.NumberStyles.Currency);
+            textBox9.Text = price.ToString("#,#");
+            textBox9.SelectionStart = textBox9.Text.Length;
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox12.Text == "" || textBox12.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox12.Text, System.Globalization.NumberStyles.Currency);
+            textBox12.Text = price.ToString("#,#");
+            textBox12.SelectionStart = textBox12.Text.Length;
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox11.Text == "" || textBox11.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox11.Text, System.Globalization.NumberStyles.Currency);
+            textBox11.Text = price.ToString("#,#");
+            textBox11.SelectionStart = textBox11.Text.Length;
         }
 
         private void textBox3_TextChanged_1(object sender, EventArgs e)
@@ -337,8 +362,8 @@ namespace CounselingCenter
             dataRow["تاریخ"] = maskedTextBox1.Text;
             dataRow["نام مراجع"] = textBox1.Text;
             dataRow["نام مشاور"] = textBox2.Text;
-            dataRow["نام معرف"] = textBox3.Text;
-            dataRow["کارت"] = string.IsNullOrWhiteSpace(textBox4.Text) ? "N/A" : textBox4.Text;
+            dataRow["نام معرف"] = string.IsNullOrWhiteSpace(textBox3.Text) ? "N" : textBox3.Text;
+            dataRow["کارت"] = string.IsNullOrWhiteSpace(textBox4.Text) ? 0 : decimal.Parse(textBox4.Text);
             dataRow["پوز"] = string.IsNullOrWhiteSpace(textBox5.Text) ? 0 : decimal.Parse(textBox5.Text);
             dataRow["نقدی"] = string.IsNullOrWhiteSpace(textBox6.Text) ? 0 : decimal.Parse(textBox6.Text);
             dataRow["جمع دریافتی"] = string.IsNullOrWhiteSpace(textBox7.Text) ? 0 : decimal.Parse(textBox7.Text);
@@ -368,7 +393,7 @@ namespace CounselingCenter
             {
                 // Declare your connection string and query string here
                 string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
-                string updateQuery = "UPDATE [tableD1] SET [تاریخ] = ?, [نام مراجع] = ?, [نام مشاور] = ?, [نام معرف] = ?, [کارت] = ?, [پوز] = ?, [نقدی] = ?, [جمع دریافتی] = ?, [درصد مشاور] = ?, [سهم مشاور] = ?, [درصد معرف] = ?, [سهم معرف] = ?, [سهم مرکز] = ? WHERE [ID] = ?";
+                string updateQuery = "UPDATE [tableD1] SET [سهم مرکز] = ?, [سهم معرف] = ?, [درصد معرف] = ?, [سهم مشاور] = ?, [درصد مشاور] = ?, [جمع دریافتی] = ?, [نقدی] = ?, [پوز] = ?, [کارت] = ?, [نام معرف] = ?, [نام مشاور] = ?, [نام مراجع] = ?, [تاریخ] = ? WHERE [ID] = ?";
 
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
@@ -378,20 +403,20 @@ namespace CounselingCenter
                     using (OleDbCommand command = new OleDbCommand(updateQuery, connection))
                     {
                         // Add parameters to the command.
-                        command.Parameters.AddWithValue("@تاریخ", maskedTextBox1.Text);
-                        command.Parameters.AddWithValue("@نام مراجع", textBox1.Text);
-                        command.Parameters.AddWithValue("@نام مشاور", textBox2.Text);
-                        command.Parameters.AddWithValue("@نام معرف", textBox3.Text);
-                        command.Parameters.AddWithValue("@کارت", string.IsNullOrWhiteSpace(textBox4.Text) ? "N/A" : textBox4.Text);
-                        command.Parameters.AddWithValue("@پوز", string.IsNullOrWhiteSpace(textBox5.Text) ? 0 : decimal.Parse(textBox5.Text));
-                        command.Parameters.AddWithValue("@نقدی", string.IsNullOrWhiteSpace(textBox6.Text) ? 0 : decimal.Parse(textBox6.Text));
-                        command.Parameters.AddWithValue("@جمع دریافتی", string.IsNullOrWhiteSpace(textBox7.Text) ? 0 : decimal.Parse(textBox7.Text));
-                        command.Parameters.AddWithValue("@درصد مشاور", string.IsNullOrWhiteSpace(textBox8.Text) ? 0 : decimal.Parse(textBox8.Text));
-                        command.Parameters.AddWithValue("@سهم مشاور", string.IsNullOrWhiteSpace(textBox9.Text) ? 0 : decimal.Parse(textBox9.Text));
-                        command.Parameters.AddWithValue("@درصد معرف", string.IsNullOrWhiteSpace(textBox10.Text) ? 0 : decimal.Parse(textBox10.Text));
-                        command.Parameters.AddWithValue("@سهم معرف", string.IsNullOrWhiteSpace(textBox11.Text) ? 0 : decimal.Parse(textBox11.Text));
-                        command.Parameters.AddWithValue("@سهم مرکز", string.IsNullOrWhiteSpace(textBox12.Text) ? 0 : decimal.Parse(textBox12.Text));
-                        command.Parameters.AddWithValue("@ID", dataRow["ID"]); // Assuming there's an "ID" column
+                        command.Parameters.AddWithValue("@سهم مرکز", Convert.ToDecimal(dataRow["سهم مرکز"]));
+                        command.Parameters.AddWithValue("@سهم معرف", Convert.ToDecimal(dataRow["سهم معرف"]));
+                        command.Parameters.AddWithValue("@درصد معرف", Convert.ToDecimal(dataRow["درصد معرف"]));
+                        command.Parameters.AddWithValue("@سهم مشاور", Convert.ToDecimal(dataRow["سهم مشاور"]));
+                        command.Parameters.AddWithValue("@درصد مشاور", Convert.ToDecimal(dataRow["درصد مشاور"]));
+                        command.Parameters.AddWithValue("@جمع دریافتی", Convert.ToDecimal(dataRow["جمع دریافتی"]));
+                        command.Parameters.AddWithValue("@نقدی", Convert.ToDecimal(dataRow["نقدی"]));
+                        command.Parameters.AddWithValue("@پوز", Convert.ToDecimal(dataRow["پوز"]));
+                        command.Parameters.AddWithValue("@کارت", Convert.ToDecimal(dataRow["کارت"]));
+                        command.Parameters.AddWithValue("@نام معرف", dataRow["نام معرف"].ToString());
+                        command.Parameters.AddWithValue("@نام مشاور", dataRow["نام مشاور"].ToString());
+                        command.Parameters.AddWithValue("@نام مراجع", dataRow["نام مراجع"].ToString());
+                        command.Parameters.AddWithValue("@تاریخ", dataRow["تاریخ"].ToString());
+                        command.Parameters.AddWithValue("@ID", dataRow["ID"]);
 
                         // Execute the UPDATE query.
                         command.ExecuteNonQuery();
@@ -422,6 +447,7 @@ namespace CounselingCenter
             dataGridView1.Refresh();
             // Clear the textboxes after updating
             // ClearTextBoxes();
+            tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
         }
 
 
@@ -464,17 +490,46 @@ namespace CounselingCenter
                 // Get the corresponding DataRow
                 DataRow dataRow = ((DataRowView)selectedRow.DataBoundItem).Row;
 
-                // Delete the DataRow from the DataTable
-                dataRow.Delete();
+                try
+                {
+                    // Declare your connection string and query string here
+                    string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                    string deleteQuery = "DELETE FROM [tableD1] WHERE [ID] = ?";
 
-                // Refresh the DataGridView to reflect the changes
-                dataGridView1.Refresh();
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
 
-                // Show a success message
-                MessageBox.Show("ردیف انتخاب شده حذف شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Create and configure the command.
+                        using (OleDbCommand command = new OleDbCommand(deleteQuery, connection))
+                        {
+                            // Get the ID of the deleted row from the DataRow
+                            int deletedRowID = Convert.ToInt32(dataRow["ID"]);
+
+                            // Add a parameter for the ID
+                            command.Parameters.AddWithValue("@ID", deletedRowID);
+
+                            // Execute the DELETE query.
+                            command.ExecuteNonQuery();
+
+                            // Delete the DataRow from the DataTable
+                            dataRow.Delete();
+
+                            // Refresh the DataGridView to reflect the changes
+                            dataGridView1.Refresh();
+
+                            // Show a success message
+                            MessageBox.Show("ردیف انتخاب شده حذف شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle database connection or query errors.
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             tableD1TableAdapter2.Update(counselingcenterDataSet11.tableD1);
-
         }
 
         private void button4_Click(object sender, EventArgs e)

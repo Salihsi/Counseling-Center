@@ -250,6 +250,11 @@ namespace CounselingCenter
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            if (textBox2.Text == "" || textBox2.Text == "0") return;
+            decimal price;
+            price = decimal.Parse(textBox2.Text, System.Globalization.NumberStyles.Currency);
+            textBox2.Text = price.ToString("#,#");
+            textBox2.SelectionStart = textBox2.Text.Length;
 
         }
 
@@ -499,11 +504,11 @@ namespace CounselingCenter
                     // Populate textboxes with data from the selected row
 
                     maskedTextBox1.Text = selectedRow.Cells[1].Value.ToString();
-                    textBox1.Text = selectedRow.Cells[1].Value.ToString();
-                    textBox2.Text = selectedRow.Cells[2].Value.ToString();
-                    textBox3.Text = selectedRow.Cells[3].Value.ToString();
-                    textBox4.Text = selectedRow.Cells[4].Value.ToString();
-                    textBox5.Text = selectedRow.Cells[5].Value.ToString();
+                    textBox1.Text = selectedRow.Cells[2].Value.ToString();
+                    textBox2.Text = selectedRow.Cells[3].Value.ToString();
+                    textBox3.Text = selectedRow.Cells[4].Value.ToString();
+                    textBox4.Text = selectedRow.Cells[5].Value.ToString();
+                    textBox5.Text = selectedRow.Cells[6].Value.ToString();
                 }
             }
         }

@@ -99,6 +99,13 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tableD1TableAdapter2 = new CounselingCenter.counselingcenterDataSet11TableAdapters.tableD1TableAdapter();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableD1BindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counselingcenterDataSet11)).BeginInit();
@@ -754,11 +761,96 @@
             // 
             this.tableD1TableAdapter2.ClearBeforeFill = true;
             // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label21.Location = new System.Drawing.Point(1151, 167);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(29, 16);
+            this.label21.TabIndex = 38;
+            this.label21.Text = "ریال";
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label22.Location = new System.Drawing.Point(1372, 167);
+            this.label22.Name = "label22";
+            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label22.Size = new System.Drawing.Size(29, 16);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "ریال";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label23.Location = new System.Drawing.Point(1372, 224);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(29, 16);
+            this.label23.TabIndex = 40;
+            this.label23.Text = "ریال";
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label24.Location = new System.Drawing.Point(1372, 379);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(29, 16);
+            this.label24.TabIndex = 41;
+            this.label24.Text = "ریال";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label25.Location = new System.Drawing.Point(1372, 329);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 16);
+            this.label25.TabIndex = 42;
+            this.label25.Text = "ریال";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label26.Location = new System.Drawing.Point(1151, 329);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 16);
+            this.label26.TabIndex = 43;
+            this.label26.Text = "ریال";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label27.Location = new System.Drawing.Point(1151, 379);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(29, 16);
+            this.label27.TabIndex = 44;
+            this.label27.Text = "ریال";
+            // 
             // visit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1672, 736);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -893,5 +985,12 @@
         private counselingcenterDataSet11 counselingcenterDataSet11;
         private System.Windows.Forms.BindingSource tableD1BindingSource2;
         private counselingcenterDataSet11TableAdapters.tableD1TableAdapter tableD1TableAdapter2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
     }
 }
