@@ -33,7 +33,8 @@ namespace CounselingCenter
             string queryString;
             string connectionString;
             queryString = @"Select * From [tableD1] ";
-            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
+            //C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb
             DataTable table = new DataTable
             {
                 Locale = CultureInfo.InvariantCulture
@@ -116,7 +117,7 @@ namespace CounselingCenter
             decimal sohmMarkaz = jameDaryafti - (sohmMoshaver + sohmMaaref);
 
             // Declare your connection string and query string here
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
             string insertQuery = "INSERT INTO [tableD1] ([سهم مرکز], [سهم معرف], [درصد معرف], [سهم مشاور], [درصد مشاور], [جمع دریافتی], [نقدی], [پوز], [کارت], [نام معرف], [نام مشاور], [نام مراجع], [تاریخ]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             // Create a new row for the DataTable.
             DataRow newRow = ((DataTable)dataGridView1.DataSource).NewRow();
@@ -392,7 +393,7 @@ namespace CounselingCenter
             try
             {
                 // Declare your connection string and query string here
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
                 string updateQuery = "UPDATE [tableD1] SET [سهم مرکز] = ?, [سهم معرف] = ?, [درصد معرف] = ?, [سهم مشاور] = ?, [درصد مشاور] = ?, [جمع دریافتی] = ?, [نقدی] = ?, [پوز] = ?, [کارت] = ?, [نام معرف] = ?, [نام مشاور] = ?, [نام مراجع] = ?, [تاریخ] = ? WHERE [ID] = ?";
 
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -493,7 +494,7 @@ namespace CounselingCenter
                 try
                 {
                     // Declare your connection string and query string here
-                    string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                    string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
                     string deleteQuery = "DELETE FROM [tableD1] WHERE [ID] = ?";
 
                     using (OleDbConnection connection = new OleDbConnection(connectionString))

@@ -26,7 +26,8 @@ namespace CounselingCenter
             string queryString;
             string connectionString;
             queryString = @"Select * From [tableH1] ";
-            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
+            //C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb
             DataTable table = new DataTable
             {
                 Locale = CultureInfo.InvariantCulture
@@ -85,7 +86,7 @@ namespace CounselingCenter
 
        private void button1_Click(object sender, EventArgs e)
         {
-           string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+           string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
            string insertQuery = "INSERT INTO tableH1 ([تاریخ], [عنوان خرید], [مبلغ خرید], [نام خریدار], [محل اعتبار], [نوع هزینه]) VALUES (?, ?, ?, ?, ?, ?)";
 
            try
@@ -199,7 +200,7 @@ namespace CounselingCenter
                     // Get the ID (assuming it's in the first column) of the selected row.
                     int selectedID = Convert.ToInt32(selectedRow.Cells[0].Value);
 
-                    string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                    string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
 
                     // Construct a DELETE query to remove the selected row by its ID.
                     string deleteQuery = "DELETE FROM tableH1 WHERE ID = @ID";
@@ -281,7 +282,7 @@ namespace CounselingCenter
                 // Get the ID (assuming it's in the first column) of the selected row.
                 int selectedID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
 
                 // Construct an UPDATE query to update the selected row by its ID.
                 string updateQuery = "UPDATE tableH1 SET [تاریخ] = ?, [عنوان خرید] = ?, [مبلغ خرید] = ?, [نام خریدار] = ?, [محل اعتبار] = ?, [نوع هزینه] = ? WHERE ID = ?";
@@ -375,7 +376,7 @@ namespace CounselingCenter
             // Check if at least one textbox was filled.
             if (conditions.Count > 0)
             {
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
 
                 // Construct a SELECT query with a WHERE clause based on the filled textboxes.
                 string searchQuery = "SELECT * FROM tableH1 WHERE " + string.Join(" OR ", conditions);

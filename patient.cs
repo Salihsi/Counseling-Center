@@ -41,7 +41,7 @@ namespace CounselingCenter
              queryString = @"Select * From [tableP] ";
 
         
-            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
              DataTable table = new DataTable
              {
                  Locale = CultureInfo.InvariantCulture
@@ -174,7 +174,7 @@ namespace CounselingCenter
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
 
             string query = string.Format(
                 @"UPDATE tableP SET parvandenum = '{0}', name ='{1}', phone = '{2}', [day] = '{3}', [month] = '{4}', [year] = '{5}', darmangar = '{6}' WHERE ID = {7}",
@@ -214,7 +214,8 @@ namespace CounselingCenter
             {
 
                 // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
+                //C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb
 
 
                 string query = string.Format(
@@ -246,7 +247,7 @@ namespace CounselingCenter
         private void button4_Click(object sender, EventArgs e)
         {
             // queryString = @"Select ID,parvandenum,name,phone,day,month,year,darmangar From [tableP] ";
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
             string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum = '{0}' OR name LIKE '%{1}%' OR phone = '{2}' OR day = '{3}' OR month = '{4}' OR year = '{5}' OR darmangar = '{6}'", textBox1.Text, textBox2.Text,textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
             //string query = string.Format(@"SELECT * FROM [tableP] WHERE parvandenum LIKE '%{0}%' OR name LIKE '%{1}%' OR phone LIKE '%{2}%' OR day LIKE '%{3}%' OR month LIKE '%{4}%' OR year LIKE '%{5}%' OR darmangar LIKE '%{6}%'", textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
 
@@ -289,7 +290,7 @@ namespace CounselingCenter
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Company-main\Codes\CounselingCenter\bin\Debug\counselingcenter.accdb;";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
             // string query = @"INSERT INTO tableP (parvandenum, name, phone, day, month, year, darmangar) VALUES (?, ?, ?, ?, ?, ?, ?)";
             string query = string.Format(
                                             @"insert into tableP (parvandenum,name,phone,[day],[month],[year],darmangar) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}') ",
