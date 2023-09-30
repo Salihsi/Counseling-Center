@@ -76,7 +76,7 @@ namespace CounselingCenter
             this.tableH1TableAdapter1.Fill(this.counselingcenterDataSet10.tableH1);
             // TODO: This line of code loads data into the 'counselingcenterDataSet9.tableH1' table. You can move, or remove it, as needed.
             this.tableH1TableAdapter.Fill(this.counselingcenterDataSet9.tableH1);
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -84,12 +84,12 @@ namespace CounselingCenter
 
         }
 
-       private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-           string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
-           string insertQuery = "INSERT INTO tableH1 ([تاریخ], [عنوان خرید], [مبلغ خرید], [نام خریدار], [محل اعتبار], [نوع هزینه]) VALUES (?, ?, ?, ?, ?, ?)";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\counselingcenter.accdb;";
+            string insertQuery = "INSERT INTO tableH1 ([تاریخ], [عنوان خرید], [مبلغ خرید], [نام خریدار], [محل اعتبار], [نوع هزینه]) VALUES (?, ?, ?, ?, ?, ?)";
 
-           try
+            try
             {
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
@@ -512,6 +512,11 @@ namespace CounselingCenter
                     textBox5.Text = selectedRow.Cells[6].Value.ToString();
                 }
             }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

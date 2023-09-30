@@ -109,11 +109,11 @@ namespace CounselingCenter
 
             decimal jameDaryafti = kart + poz + naqd;
             decimal darsadMoshaver = string.IsNullOrWhiteSpace(textBox8.Text) ? 0 : decimal.Parse(textBox8.Text);
-            decimal sohmMoshaver = (darsadMoshaver) * jameDaryafti;
+            decimal sohmMoshaver = (darsadMoshaver/100) * jameDaryafti;
 
             // Calculate سهم معرف and سهم مرکز if درصد معرف is filled
             decimal darsadMaaref = string.IsNullOrWhiteSpace(textBox10.Text) ? 0 : decimal.Parse(textBox10.Text);
-            decimal sohmMaaref = (darsadMaaref) * jameDaryafti;
+            decimal sohmMaaref = (darsadMaaref/100) * jameDaryafti;
             decimal sohmMarkaz = jameDaryafti - (sohmMoshaver + sohmMaaref);
 
             // Declare your connection string and query string here
